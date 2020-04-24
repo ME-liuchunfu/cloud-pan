@@ -8,7 +8,6 @@ import javafx.stage.Stage;
 import xin.spring.bless.javafx.framework.annotation.ViewTitle;
 
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.net.URL;
 
 /**
@@ -27,18 +26,9 @@ public abstract class BaseApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-       // this.clazz = this.getClass();
-        //this.typeName = this.clazz.getTypeName();
-       // this.clazzPackageFileName = this.typeName.replace(".", "/");
-        if(this.getClass().getAnnotation(ViewTitle.class) != null) {
-            Field[] fields = this.getClass().getDeclaredFields();
-            for (Field field : fields) {
-                if (field.getAnnotation(ViewTitle.class) != null) {
-                    field.setAccessible(true);
-                    this.frameTitle = field.get(this).toString();
-                    break;
-                }
-            }
+        if(this.getClass().getDeclaredAnnotation(ViewTitle.class) != null) {
+            ViewTitle title = this.getClass().getAnnotation(ViewTitle.class);
+            this.frameTitle = title.value();
         }
         try {
             String path = "/" + this.getClass().getName().replace(".","/");

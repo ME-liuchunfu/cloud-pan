@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.GridPane?>
 
-<GridPane prefHeight="320.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane prefHeight="320.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="xin.spring.bless.javafx.client.views.index.IndexAppController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="129.0" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="225.0" minWidth="10.0" prefWidth="220.0" />
@@ -40,7 +40,7 @@
         </PasswordField>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3">
             <children>
-                <Button fx:id="register" layoutX="-1.0" layoutY="17.0" mnemonicParsing="false" text="注 册" AnchorPane.leftAnchor="-1.0" />
+                <Button fx:id="register" layoutX="-1.0" layoutY="17.0" mnemonicParsing="false" text="文件选取" AnchorPane.leftAnchor="-1.0" />
                 <Button fx:id="submit" layoutX="178.0" layoutY="17.0" mnemonicParsing="false" text="登 录" AnchorPane.rightAnchor="82.0" />
             </children>
         </AnchorPane>

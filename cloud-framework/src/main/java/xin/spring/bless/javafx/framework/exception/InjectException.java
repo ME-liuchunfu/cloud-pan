@@ -1,6 +1,6 @@
 package xin.spring.bless.javafx.framework.exception;
 
-/**功能描述: 以来依赖注入异常
+/**功能描述: 依赖注入异常
 $params$
 *@return:$return$
 *@Author:$user$
@@ -9,7 +9,7 @@ $params$
 public class InjectException extends RuntimeException{
 
     public InjectException(){
-        this("以来依赖注入异常");
+        this("依赖依赖注入异常");
     }
 
     public InjectException(String msg){

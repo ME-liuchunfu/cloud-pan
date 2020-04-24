@@ -9,8 +9,6 @@ import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import xin.spring.bless.javafx.client.session.ApplicationSession;
 import xin.spring.bless.javafx.client.views.index.IndexApplication;
-import xin.spring.bless.javafx.common.dialog.AlertDialog;
-import xin.spring.bless.javafx.common.pojo.LogOper;
 import xin.spring.bless.javafx.common.pojo.User;
 import xin.spring.bless.javafx.common.utils.StringUtils;
 import xin.spring.bless.javafx.core.AbsInitializable;
@@ -18,7 +16,6 @@ import xin.spring.bless.javafx.db.repositories.LogOperRepository;
 import xin.spring.bless.javafx.db.repositories.UserRepository;
 
 import java.util.Optional;
-import java.util.UUID;
 
 /**
  * 功能描述:
@@ -53,10 +50,47 @@ public class LoginAppController extends AbsInitializable {
     protected void initListener() {
         //new Alert()
         submit.setOnAction(event -> {
-            LogOper logOper = new LogOper();
-            logOper.setContenxt(UUID.randomUUID().toString().replace("-",""));
-            logOperRepository.save(logOper);
-            AlertDialog.displayDelay("新增", "保存成功", 2000);
+            String loginN = StringUtils.trim(loginname.getText());
+            String pwd = StringUtils.trim(password.getText());
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            if((null != loginN && !"".equals(loginN)) && (null != pwd && !"".equals(pwd))){
+                User user = userRepository.findByLoginName(loginN);
+                if(user != null && user.isEnables()){
+                    if(user.getPassword().equals(pwd)){
+                        ApplicationSession.newInstance().putUser(user);
+                        // 关闭当前，并跳转主页面
+                        Stage stage = (Stage)register.getScene().getWindow();
+                        stage.close();
+                        try {
+                            new IndexApplication().start(new Stage());
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setTitle("启动失败了");
+                            alert.setContentText("程序发生错误，退出");
+                            alert.setHeaderText(null);
+                            alert.showAndWait();
+                        }
+                    }else{
+                        alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("登录提示");
+                        alert.setContentText("账号密码不匹配或该账号被禁用。");
+                        alert.setHeaderText(null);
+                        alert.showAndWait();
+                    }
+                }else{
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("登录提示");
+                    alert.setHeaderText(null);
+                    alert.setContentText("账号密码不匹配或该账号被禁用。");
+                    alert.showAndWait();
+                }
+            }else{
+                alert.setTitle("账号或密码为空");
+                alert.setHeaderText(null);
+                alert.setContentText("请认真输入密码账号");
+                alert.showAndWait();
+            }
         });
 
         register.setOnAction(event -> {

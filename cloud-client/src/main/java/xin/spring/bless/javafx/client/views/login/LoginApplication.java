@@ -12,10 +12,8 @@ import xin.spring.bless.javafx.framework.annotation.ViewTitle;
  * @description denglu
  * @date 2020/04/23
  */
+@ViewTitle("登录分布式私有云")
 public class LoginApplication extends BaseApplication {
-
-    @ViewTitle
-    protected String title = "分布式私有云";
 
     @Override
     protected void initViews(Stage primaryStage) {

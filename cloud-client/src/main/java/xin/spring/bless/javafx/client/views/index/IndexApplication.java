@@ -5,17 +5,15 @@ import xin.spring.bless.javafx.core.BaseApplication;
 import xin.spring.bless.javafx.framework.annotation.ViewTitle;
 
 /**
- * 功能描述:
+ * 功能描述:s主页
  * $params$
  *
  * @return: $return$
  * @Author: $user$
  * @Date: $date$ $time$
  */
+@ViewTitle("首页")
 public class IndexApplication extends BaseApplication {
-
-    @ViewTitle
-    protected String title = "首页";
 
     @Override
     protected void initViews(Stage primaryStage) {
