@@ -3,6 +3,7 @@ package xin.spring.bless.javafx.client.views.login;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import xin.spring.bless.javafx.core.BaseApplication;
+import xin.spring.bless.javafx.framework.annotation.ViewTitle;
 
 /**
  * @author spring
@@ -12,9 +13,13 @@ import xin.spring.bless.javafx.core.BaseApplication;
  * @date 2020/04/23
  */
 public class LoginApplication extends BaseApplication {
+
+    @ViewTitle
+    protected String title = "分布式私有云";
+
     @Override
     protected void initViews(Stage primaryStage) {
-        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("images/earth.jpg")));
+        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("images/yun_logo.png")));
     }
 
     public static void main(String[] args) {

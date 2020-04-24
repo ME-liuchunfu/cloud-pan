@@ -3,7 +3,7 @@
 hibernate:
   connection:
     driverClass: com.mysql.jdbc.Driver
-    url: jdbc:mysql://47.103.144.95:3306/cloud_pan_db
+    url: jdbc:mysql://127.0.0.1:3306/cloud_pan_db
     username: root
     password: root123
     providerClass: org.hibernate.connection.C3P0ConnectionProvider

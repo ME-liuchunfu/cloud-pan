@@ -1,6 +1,7 @@
 package xin.spring.bless.javafx.client.session;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import xin.spring.bless.javafx.common.pojo.User;
 import xin.spring.bless.javafx.db.config.jpa.JpaConfig;
 
 import java.util.HashMap;
@@ -28,6 +29,17 @@ public final class ApplicationSession extends HashMap<Object, Object> {
     public ApplicationSession remove(Object key) {
         super.remove(key);
         return this;
+    }
+
+    public static final String USER_KEY = "USER_KEY";
+
+    public boolean putUser(User user){
+        Object put = super.put(USER_KEY, user);
+        return put != null ? true : false;
+    }
+
+    public User getUser(){
+        return (User) get(USER_KEY);
     }
 
     public <T> T get(Class<T> clazz){
