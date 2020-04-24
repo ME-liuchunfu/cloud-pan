@@ -1,0 +1,66 @@
+package xin.spring.bless.javafx.core;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import xin.spring.bless.javafx.framework.annotation.ViewTitle;
+
+import java.io.IOException;
+import java.lang.reflect.Field;
+import java.net.URL;
+
+/**
+ * @author spring
+ * email: 4298293220@qq.com
+ * site: https://springbless.xin
+ * @description javafx-application基类
+ * @date 2020/04/23
+ */
+public abstract class BaseApplication extends Application {
+
+    /**
+     * 窗体标题
+     */
+    protected String frameTitle;
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+       // this.clazz = this.getClass();
+        //this.typeName = this.clazz.getTypeName();
+       // this.clazzPackageFileName = this.typeName.replace(".", "/");
+        if(this.getClass().getAnnotation(ViewTitle.class) != null) {
+            Field[] fields = this.getClass().getDeclaredFields();
+            for (Field field : fields) {
+                if (field.getAnnotation(ViewTitle.class) != null) {
+                    field.setAccessible(true);
+                    this.frameTitle = field.get(this).toString();
+                    break;
+                }
+            }
+        }
+        try {
+            String path = "/" + this.getClass().getName().replace(".","/");
+            URL resource = this.getClass().getResource(path+ ".fxml");
+            Parent root = FXMLLoader.load(this.getClass().getResource(path + ".fxml"));
+            Scene scene = new Scene(root);
+
+            scene.getStylesheets().add(this.getClass().getResource(path + ".css").toExternalForm());
+            primaryStage.setTitle(frameTitle != null ? frameTitle : this.getClass().getName());
+            primaryStage.setScene(scene);
+            primaryStage.setResizable(false);
+            // 自定义其他显示样式
+            initViews(primaryStage);
+            primaryStage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 初始化视图
+     */
+    protected abstract void initViews(Stage primaryStage);
+
+}
