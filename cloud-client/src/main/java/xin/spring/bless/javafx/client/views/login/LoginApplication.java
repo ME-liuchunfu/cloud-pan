@@ -13,7 +13,7 @@ import xin.spring.bless.javafx.framework.annotation.ViewTitle;
  * @date 2020/04/23
  */
 @ViewTitle("登录分布式私有云")
-public class LoginApplication extends BaseApplication {
+public class LoginApplication extends BaseApplication<LoginApplication> {
 
     @Override
     protected void initViews(Stage primaryStage) {

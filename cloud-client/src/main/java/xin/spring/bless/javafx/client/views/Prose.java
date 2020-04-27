@@ -7,6 +7,7 @@ import javafx.concurrent.Task;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -80,6 +81,12 @@ public class Prose extends Application {
         });
         primaryStage.setScene(scene);
         primaryStage.show();
+
+        Alert display = new Alert(Alert.AlertType.INFORMATION);
+        display.setTitle("文件上传");
+        display.setContentText("文件上传中，请耐心等待。");
+        display.setHeaderText(null);
+        display.show();
     }
 
     public Task createWorker() {

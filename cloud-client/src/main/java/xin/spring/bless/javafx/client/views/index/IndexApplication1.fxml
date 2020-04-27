@@ -19,22 +19,25 @@
          </children>
       </Pane>
    </top>
+   <left>
+      <VBox fx:id="leftParent" prefWidth="150.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label prefHeight="212.0" prefWidth="31.0" text="Label" />
+         </children>
+      </VBox>
+   </left>
    <center>
       <Pane fx:id="contentParent">
          <children>
-            <HBox fx:id="contPositionHBox" layoutX="20.0" prefHeight="30.0" prefWidth="580.0" />
-            <ScrollPane fx:id="scrollPane" layoutX="10.0" layoutY="30.0" prefHeight="387.0" prefWidth="586.0">
-               <content>
-                  <FlowPane fx:id="contFlow" prefHeight="383.0" prefWidth="580.0" />
-               </content>
-            </ScrollPane>
+            <Label fx:id="contPositionTitle" minHeight="30.0" prefHeight="17.0" prefWidth="651.0" text="当前位置">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <GridPane fx:id="contGrid" layoutY="30.0" prefHeight="391.0" prefWidth="652.0">
+
+            </GridPane>
          </children>
-         <padding>
-            <Insets left="10.0" />
-         </padding>
       </Pane>
    </center>
-   <left>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-   </left>
 </BorderPane>

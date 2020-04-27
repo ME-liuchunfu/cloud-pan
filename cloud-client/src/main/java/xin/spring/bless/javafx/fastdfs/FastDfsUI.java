@@ -18,6 +18,11 @@ public class FastDfsUI {
     private String fileId;
 
     /**
+     * 文件类型
+     */
+    private String fileType;
+
+    /**
      * ui
      */
     private Alert display;
@@ -49,10 +54,19 @@ public class FastDfsUI {
         this.display = display;
     }
 
+    public String getFileType() {
+        return fileType;
+    }
+
+    public void setFileType(String fileType) {
+        this.fileType = fileType;
+    }
+
     @Override
     public String toString() {
         return "FastDfsUI{" +
                 "fileId='" + fileId + '\'' +
+                ", fileType='" + fileType + '\'' +
                 ", display=" + display +
                 '}';
     }

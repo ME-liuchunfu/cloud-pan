@@ -17,7 +17,9 @@ import java.net.URL;
  * @description javafx-application基类
  * @date 2020/04/23
  */
-public abstract class BaseApplication extends Application {
+public abstract class BaseApplication<T> extends Application {
+
+    private static Object instance;
 
     /**
      * 窗体标题
@@ -25,7 +27,8 @@ public abstract class BaseApplication extends Application {
     protected String frameTitle;
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
+        instance = this;
         if(this.getClass().getDeclaredAnnotation(ViewTitle.class) != null) {
             ViewTitle title = this.getClass().getAnnotation(ViewTitle.class);
             this.frameTitle = title.value();
@@ -46,6 +49,15 @@ public abstract class BaseApplication extends Application {
         }catch (IOException e){
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 获取实例对象
+     * @param <T>
+     * @return
+     */
+    public static <T> T getInstance(){
+        return (T) instance;
     }
 
     /**

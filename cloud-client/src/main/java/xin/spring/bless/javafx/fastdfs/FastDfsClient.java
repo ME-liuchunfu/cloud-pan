@@ -74,6 +74,7 @@ public class FastDfsClient implements Slf4jLog {
             String subFix = path.substring(i + 1);
             display.getDisplay().setContentText("文件上传中，请稍后.");
             display.getDisplay().show();
+            display.setFileType(subFix);
             String fileId = sc1.upload_file1(path, subFix, meta_list);
             display.setFileId(fileId);
             log.info("上传成功，远程节点地址：{}", fileId);

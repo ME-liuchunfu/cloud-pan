@@ -60,6 +60,12 @@ public class CloudFile implements Serializable {
     @Column(name="file_size", columnDefinition="bigint(64) COMMENT '文件大小'")
     private Long fileSize;
 
+    /**
+     * 文件类型
+     */
+    @Column(name="file_type", columnDefinition="varchar(12) COMMENT '文件类型'")
+    private String fileType;
+
     private User user;
 
     @Override
@@ -71,6 +77,7 @@ public class CloudFile implements Serializable {
                 ", createTime=" + createTime +
                 ", fileName='" + fileName + '\'' +
                 ", fileSize=" + fileSize +
+                ", fileType='" + fileType + '\'' +
                 ", user=" + user +
                 '}';
     }
