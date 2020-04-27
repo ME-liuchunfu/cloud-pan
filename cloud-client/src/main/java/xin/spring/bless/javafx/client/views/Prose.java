@@ -88,7 +88,7 @@ public class Prose extends Application {
             protected Object call() throws Exception {
                 for (int i = 0; i < 10; i++) {
                     Thread.sleep(2000);
-                    updateMessage("2000 milliseconds");
+                    updateMessage("current:" + i + "Thread.sleep===2000 milliseconds");
                     updateProgress(i + 1, 10);
                 }
                 return true;

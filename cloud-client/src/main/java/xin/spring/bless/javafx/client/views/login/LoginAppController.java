@@ -14,6 +14,7 @@ import xin.spring.bless.javafx.common.utils.StringUtils;
 import xin.spring.bless.javafx.core.AbsInitializable;
 import xin.spring.bless.javafx.db.repositories.LogOperRepository;
 import xin.spring.bless.javafx.db.repositories.UserRepository;
+import xin.spring.bless.javafx.dialog.AlertDialog;
 
 import java.util.Optional;
 
@@ -52,7 +53,7 @@ public class LoginAppController extends AbsInitializable {
         submit.setOnAction(event -> {
             String loginN = StringUtils.trim(loginname.getText());
             String pwd = StringUtils.trim(password.getText());
-            Alert alert = new Alert(Alert.AlertType.WARNING);
+            Alert alert = AlertDialog.warn("账号或密码为空","请认真输入密码账号" );
             if((null != loginN && !"".equals(loginN)) && (null != pwd && !"".equals(pwd))){
                 User user = userRepository.findByLoginName(loginN);
                 if(user != null && user.isEnables()){
@@ -65,30 +66,18 @@ public class LoginAppController extends AbsInitializable {
                             new IndexApplication().start(new Stage());
                         } catch (Exception e) {
                             e.printStackTrace();
-                            alert = new Alert(Alert.AlertType.ERROR);
-                            alert.setTitle("启动失败了");
-                            alert.setContentText("程序发生错误，退出");
-                            alert.setHeaderText(null);
+                            alert = AlertDialog.error("启动失败了", "程序发生错误，退出");
                             alert.showAndWait();
                         }
                     }else{
-                        alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setTitle("登录提示");
-                        alert.setContentText("账号密码不匹配或该账号被禁用。");
-                        alert.setHeaderText(null);
+                        alert = AlertDialog.error("登录提示", "账号密码不匹配或该账号被禁用。");
                         alert.showAndWait();
                     }
                 }else{
-                    alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("登录提示");
-                    alert.setHeaderText(null);
-                    alert.setContentText("账号密码不匹配或该账号被禁用。");
+                    alert = AlertDialog.error("登录提示", "账号密码不匹配或该账号被禁用。");
                     alert.showAndWait();
                 }
             }else{
-                alert.setTitle("账号或密码为空");
-                alert.setHeaderText(null);
-                alert.setContentText("请认真输入密码账号");
                 alert.showAndWait();
             }
         });
@@ -96,14 +85,11 @@ public class LoginAppController extends AbsInitializable {
         register.setOnAction(event -> {
             String loginN = StringUtils.trim(loginname.getText());
             String pwd = StringUtils.trim(password.getText());
-            Alert alert = new Alert(Alert.AlertType.WARNING);
+            Alert alert = AlertDialog.warn("账号或密码为空", "请认真输入密码账号");
             if((null != loginN && !"".equals(loginN)) && (null != pwd && !"".equals(pwd))){
                 User user = userRepository.findByLoginName(loginN);
                 if(null != user){
-                    alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("注册失败提示");
-                    alert.setHeaderText(null);
-                    alert.setContentText("当前账号已被使用，请更换。");
+                    alert = AlertDialog.error("注册失败提示", "当前账号已被使用，请更换。");
                     alert.showAndWait();
                 }else{
                     user = new User();
@@ -112,10 +98,7 @@ public class LoginAppController extends AbsInitializable {
                     user.setEnables(true);
                     User save = userRepository.save(user);
                     if(null != user){
-                        alert = new Alert(Alert.AlertType.CONFIRMATION);
-                        alert.setTitle("注册成功提示");
-                        alert.setHeaderText(null);
-                        alert.setContentText("注册成功是否登录。");
+                        alert = AlertDialog.confi("注册成功提示","注册成功是否登录。");
                         Optional<ButtonType> buttonType = alert.showAndWait();
                         if(buttonType.isPresent() && buttonType.get() == ButtonType.OK){
                             ApplicationSession.newInstance().putUser(save);
@@ -125,26 +108,17 @@ public class LoginAppController extends AbsInitializable {
                             try {
                                 new IndexApplication().start(new Stage());
                             } catch (Exception e) {
-                                e.printStackTrace();
-                                alert = new Alert(Alert.AlertType.ERROR);
-                                alert.setTitle("启动失败了");
-                                alert.setHeaderText(null);
-                                alert.setContentText("程序发生错误，退出");
+                                alert = AlertDialog.error("启动失败了", "程序发生错误，退出");
                                 alert.showAndWait();
+                                e.printStackTrace();
                             }
                         }
                     }else{
-                        alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setTitle("注册失败提示");
-                        alert.setHeaderText(null);
-                        alert.setContentText("注册出错，稍后请重试");
+                        alert = AlertDialog.error("注册失败提示", "注册出错，稍后请重试");
                         alert.showAndWait();
                     }
                 }
             }else{
-                alert.setTitle("账号或密码为空");
-                alert.setHeaderText(null);
-                alert.setContentText("请认真输入密码账号");
                 alert.showAndWait();
             }
 

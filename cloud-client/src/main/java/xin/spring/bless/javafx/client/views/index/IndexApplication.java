@@ -17,7 +17,7 @@ public class IndexApplication extends BaseApplication {
 
     @Override
     protected void initViews(Stage primaryStage) {
-
+        primaryStage.setResizable(true);
     }
 
 }
