@@ -34,9 +34,7 @@ import xin.spring.bless.javafx.fastdfs.FastDfsUI;
 import xin.spring.bless.javafx.framework.factory.FileDiskFactory;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * 功能描述:首页控制器
@@ -197,9 +195,69 @@ public class IndexAppController extends AbsInitializable {
             });
             item2.setOnAction(ev -> log.debug("下载"));
             item3.setOnAction(ev -> log.debug("分享"));
-            item4.setOnAction(ev -> log.debug("删除"));
+            item4.setOnAction(ev -> {
+                log.debug("删除");
+                Alert alert = AlertDialog.confi("删除提示", "您确定要删除" + file.getFolderName() + "吗？这将不可恢复。");
+                Optional<ButtonType> buttonType = alert.showAndWait();
+                if(buttonType.isPresent() && buttonType.get() == ButtonType.OK){
+                    User user = ApplicationSession.newInstance().getUser();
+                    if("FOLDER".equals(file.getType())){
+                        Collection<FolderFile> folderFiles = tempDeleteFolders(file.getFolderId(), user.getUserId());
+                        folderFileRepository.deleteAll(folderFiles);
+                        folderFileRepository.deleteByFolderIdAndUserId(file.getFolderId(), user.getUserId());
+                    }else{
+                        folderFileRepository.deleteByFolderIdAndUserId(file.getFolderId(), user.getUserId());
+                    }
+                    flushFolderFile();
+                }
+            });
             contextMenu.getItems().addAll(menuItems);
         }
+    }
+
+    /**
+     * 查询待删除的文件或文件夹
+     * @param folderId
+     * @param userId
+     * @return
+     */
+    private Collection<FolderFile> tempDeleteFolders(Long folderId, Long userId){
+        ArrayList<FolderFile> folders = folderFileRepository.findByFolderPidAndUserId(folderId, userId);
+        if (folders != null){
+            ArrayList<FolderFile> files = new ArrayList<>();
+            folders.forEach(i->{
+                if (i.getType().equals("FOLDER")){
+                    files.add(i);
+                }
+            });
+            List<FolderFile> res = findFolderItems(files);
+            folders.addAll(res);
+        }
+        HashSet<FolderFile> folderFiles = new HashSet<>();
+        folderFiles.addAll(folders);
+        return folderFiles;
+    }
+
+    private List<FolderFile> findFolderItems(List<FolderFile> files) {
+        List<FolderFile> folderFiles = new ArrayList<>();
+        if (null != files && files.size() > 0){
+            files.forEach(i->{
+                ArrayList<FolderFile> fs = folderFileRepository.findByFolderPidAndUserId(i.getFolderId(), i.getUserId());
+                folderFiles.addAll(fs);
+            });
+            files.addAll(folderFiles);
+            ArrayList<FolderFile> nextFolders = new ArrayList<>();
+            folderFiles.forEach(i->{
+                if (i.getType().equals("FOLDER")){
+                    nextFolders.add(i);
+                }
+            });
+            List<FolderFile> fsresult = findFolderItems(nextFolders);
+            //return fsresult;
+            files.addAll(fsresult);
+            return files;
+        }
+        return files;
     }
 
     private void flushFolderFile(){
