@@ -5,6 +5,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 public class Demo extends Application {
@@ -37,7 +39,13 @@ public class Demo extends Application {
         GridPane grid = new GridPane();
         grid.setHgap(5);
         grid.setVgap(5);
+        String[]  music={"http://39.108.106.34:9870/source/M00/00/00/rBAVlF6nuruAY1JwAC6hlVFm4mc181.mp3",
+                "http://39.108.106.34:9870/source/M00/00/00/rBAVlF6nuqyAfCL8ACvmS87bXp0760.mp3"};
+        Media media = new Media("/Users/mac/Downloads/C400000KevkL3W11bX.mp3");//"/Users/mac/Desktop/来遇见他 - 胡66.mp3"
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.setVolume(0.8);
 
+        mediaPlayer.play();
         // Place the controls in the grid
         grid.add(fNameLbl, 0, 0);  // column=0, row=0
         grid.add(lNameLbl, 0, 1);  // column=0, row=1

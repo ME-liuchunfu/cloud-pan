@@ -23,6 +23,11 @@ public class FastDfsUI {
     private String fileType;
 
     /**
+     * 文件名，不包含后缀
+     */
+    private String prefName;
+
+    /**
      * ui
      */
     private Alert display;
@@ -58,6 +63,14 @@ public class FastDfsUI {
         return fileType;
     }
 
+    public String getPrefName() {
+        return prefName;
+    }
+
+    public void setPrefName(String prefName) {
+        this.prefName = prefName;
+    }
+
     public void setFileType(String fileType) {
         this.fileType = fileType;
     }
@@ -67,6 +80,7 @@ public class FastDfsUI {
         return "FastDfsUI{" +
                 "fileId='" + fileId + '\'' +
                 ", fileType='" + fileType + '\'' +
+                ", prefName='" + prefName + '\'' +
                 ", display=" + display +
                 '}';
     }

@@ -1,8 +1,6 @@
 package xin.spring.bless.javafx.common.utils;
 
-import javafx.event.Event;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
 import javafx.scene.control.Labeled;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
@@ -140,7 +138,7 @@ public class EventListenerUtils {
      * @param colorEnter
      */
     public static void handerEventColor(Labeled node, Color colorEnter, Color colorOver) {
-        handerEventColor(node, colorEnter, colorOver);
+        handerEventColor(node, colorEnter, colorOver, null);
     }
 
     /**

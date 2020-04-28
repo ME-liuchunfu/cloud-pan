@@ -18,4 +18,13 @@ public class AppTest
         assertTrue( true );
     }
 
+
+    @Test
+    public void aaa(){
+        String userDir = System.getProperties().getProperty("user.dir");
+        String userHome = System.getProperties().getProperty("user.home");
+
+        System.out.println(userDir);
+        System.out.println(userHome);
+    }
 }

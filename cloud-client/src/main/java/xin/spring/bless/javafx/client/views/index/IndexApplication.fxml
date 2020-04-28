@@ -15,7 +15,6 @@
       <Pane fx:id="topParent" prefHeight="80.0" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="271.0" layoutY="25.0" prefHeight="34.0" prefWidth="192.0" text="Label" />
-            <Button fx:id="upload" layoutX="4.0" layoutY="23.0" mnemonicParsing="false" text="Button" />
          </children>
       </Pane>
    </top>

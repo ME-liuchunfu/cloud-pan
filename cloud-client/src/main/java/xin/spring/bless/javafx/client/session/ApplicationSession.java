@@ -1,8 +1,11 @@
 package xin.spring.bless.javafx.client.session;
 
+import com.alibaba.fastjson.JSON;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import xin.spring.bless.javafx.common.pojo.User;
+import xin.spring.bless.javafx.common.utils.StringUtils;
 import xin.spring.bless.javafx.db.config.jpa.JpaConfig;
+import xin.spring.bless.javafx.framework.cache.DirCache;
 
 import java.util.HashMap;
 
@@ -39,7 +42,14 @@ public final class ApplicationSession extends HashMap<Object, Object> {
     }
 
     public User getUser(){
-        return (User) get(USER_KEY);
+        User user = (User) get(USER_KEY);
+        if(user == null) {
+            String userData = new DirCache().getUserData();
+            if (!StringUtils.isEmpty(userData)) {
+                user = JSON.parseObject(userData, User.class);
+            }
+        }
+        return user;
     }
 
     public <T> T get(Class<T> clazz){

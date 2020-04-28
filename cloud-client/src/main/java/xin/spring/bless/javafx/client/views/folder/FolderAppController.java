@@ -1,6 +1,5 @@
 package xin.spring.bless.javafx.client.views.folder;
 
-import com.sun.org.apache.xml.internal.serialize.HTMLdtd;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -40,10 +39,14 @@ public class FolderAppController extends AbsInitializable {
         cancelBtn.setTextFill(Color.WHITE);
         String path = (String)ApplicationSession.newInstance().get(FOLDER_PATH_KEY);
         String text = "当前所在路径：";
-        if(path != null){
+        if(path != null && !"".equals(path)){
             text += path;
+        }else {
+            text += "根目录";
         };
         currentPath.setText(text);
+        editFolder.setText("");
+        editFolder.requestFocus();
     }
 
     @Override

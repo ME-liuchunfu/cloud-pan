@@ -1,5 +1,6 @@
 package xin.spring.bless.javafx.client.views.login;
 
+import com.alibaba.fastjson.JSON;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -15,6 +16,7 @@ import xin.spring.bless.javafx.core.AbsInitializable;
 import xin.spring.bless.javafx.db.repositories.LogOperRepository;
 import xin.spring.bless.javafx.db.repositories.UserRepository;
 import xin.spring.bless.javafx.dialog.AlertDialog;
+import xin.spring.bless.javafx.framework.cache.DirCache;
 
 import java.util.Optional;
 
@@ -44,7 +46,11 @@ public class LoginAppController extends AbsInitializable {
 
     @Override
     protected void beforeDatas() {
-
+        User user = ApplicationSession.newInstance().getUser();
+        if (user != null) {
+            loginname.setText(user.getLoginName());
+            password.setText(user.getPassword());
+        }
     }
 
     @Override
@@ -59,6 +65,8 @@ public class LoginAppController extends AbsInitializable {
                 if(user != null && user.isEnables()){
                     if(user.getPassword().equals(pwd)){
                         ApplicationSession.newInstance().putUser(user);
+                        String json = JSON.toJSONString(user);
+                        new DirCache().cacheUser(json);
                         // 关闭当前，并跳转主页面
                         Stage stage = (Stage)register.getScene().getWindow();
                         stage.close();

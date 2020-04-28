@@ -71,6 +71,7 @@ public class FastDfsClient implements Slf4jLog {
             StorageClient1 sc1 = new StorageClient1(ts, ss);
             NameValuePair[] meta_list = null; //new NameValuePair[0];
             int i = path.lastIndexOf(".");
+            display.setPrefName(path.substring(0, i));
             String subFix = path.substring(i + 1);
             display.getDisplay().setContentText("文件上传中，请稍后.");
             display.getDisplay().show();

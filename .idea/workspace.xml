@@ -20,39 +20,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed6305cf-6b7b-4f80-afb2-ae546968b6cb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/cloud-pan.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/client/views/Demo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/client/views/folder/FolderAppController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/client/views/folder/FolderApplication.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/client/views/folder/FolderApplication.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/client/views/folder/FolderApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/client/views/folder/images/background.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/client/views/index/IndexApplication1.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloud-common/src/main/java/xin/spring/bless/javafx/common/pojo/FolderFile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloud-common/src/main/java/xin/spring/bless/javafx/common/utils/ColorUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloud-common/src/main/java/xin/spring/bless/javafx/common/utils/EventListenerUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/client/views/Prose.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/client/views/Prose.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/client/views/MusicDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cloud-database/src/main/java/xin/spring/bless/javafx/db/repositories/FolderFileRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cloud-framework/src/main/java/xin/spring/bless/javafx/framework/cache/DirCache.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cloud-framework/src/main/java/xin/spring/bless/javafx/framework/security/EncodeAndDecode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-client/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-client/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/client/session/ApplicationSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/client/session/ApplicationSession.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/client/views/Demo.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/client/views/Demo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/client/views/folder/FolderAppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/client/views/folder/FolderAppController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/client/views/index/IndexAppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/client/views/index/IndexAppController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/client/views/index/IndexApplication.css" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/client/views/index/IndexApplication.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/client/views/index/IndexApplication.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/client/views/index/IndexApplication.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/client/views/index/IndexApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/client/views/index/IndexApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/client/views/login/LoginApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/client/views/login/LoginApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/core/BaseApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/core/BaseApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/client/views/login/LoginAppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/client/views/login/LoginAppController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/fastdfs/FastDfsClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/fastdfs/FastDfsClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/fastdfs/FastDfsUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/fastdfs/FastDfsUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-client/src/test/java/xin/spring/bless/javafx/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-client/src/test/java/xin/spring/bless/javafx/AppTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cloud-common/src/main/java/xin/spring/bless/javafx/common/pojo/CloudFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-common/src/main/java/xin/spring/bless/javafx/common/pojo/CloudFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cloud-database/src/main/resources/application-datebase.yml" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-database/src/main/resources/application-datebase.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-common/src/main/java/xin/spring/bless/javafx/common/pojo/FolderFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-common/src/main/java/xin/spring/bless/javafx/common/pojo/FolderFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-common/src/main/java/xin/spring/bless/javafx/common/utils/EventListenerUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-common/src/main/java/xin/spring/bless/javafx/common/utils/EventListenerUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-framework/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-framework/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="CodeStyleSettingsInfer">
     <option name="done" value="true" />
@@ -88,23 +83,42 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/client/views/folder/images" />
+    <property name="ToolWindowCommit.ShowToolbar" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/cloud-client/src/main/java/com/jiading/controller" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/cloud-client/src/main/java/com/jiading/controller" />
+      <recent name="$PROJECT_DIR$/cloud-client/src/main/resources" />
       <recent name="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/client/views/folder/images" />
       <recent name="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/client/views/folder" />
       <recent name="$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/client/views/index" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="xin.spring.bless.javafx.db.repositories" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/cloud-client/src/main/resources/images" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.IndexApplication">
+  <component name="RunManager" selected="Application.LoginApplication">
+    <configuration name="AppMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.jiading.AppMain" />
+      <module name="cloud-client" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.jiading.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Demo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="xin.spring.bless.javafx.client.views.Demo" />
       <module name="cloud-client" />
@@ -118,12 +132,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FolderApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="xin.spring.bless.javafx.client.views.folder.FolderApplication" />
-      <module name="cloud-client" />
+    <configuration name="EncodeAndDecode" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="xin.spring.bless.javafx.framework.security.EncodeAndDecode" />
+      <module name="cloud-framework" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="xin.spring.bless.javafx.client.views.folder.*" />
+          <option name="PATTERN" value="xin.spring.bless.javafx.framework.security.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -131,12 +145,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IndexApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="xin.spring.bless.javafx.client.views.index.IndexApplication" />
+    <configuration name="LoginApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="xin.spring.bless.javafx.client.views.login.LoginApplication" />
       <module name="cloud-client" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="xin.spring.bless.javafx.client.views.index.*" />
+          <option name="PATTERN" value="xin.spring.bless.javafx.client.views.login.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -144,8 +158,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Prose" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="xin.spring.bless.javafx.client.views.Prose" />
+    <configuration name="MusicDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="xin.spring.bless.javafx.client.views.MusicDemo" />
       <module name="cloud-client" />
       <extension name="coverage">
         <pattern>
@@ -157,12 +171,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BSP.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.IndexApplication" />
-        <item itemvalue="Application.FolderApplication" />
+        <item itemvalue="Application.LoginApplication" />
+        <item itemvalue="Application.AppMain" />
         <item itemvalue="Application.Demo" />
-        <item itemvalue="Application.Prose" />
+        <item itemvalue="Application.MusicDemo" />
+        <item itemvalue="Application.EncodeAndDecode" />
       </list>
     </recent_temporary>
   </component>
@@ -177,6 +199,14 @@
       <option name="presentableId" value="Default" />
       <updated>1587966277781</updated>
     </task>
+    <task id="LOCAL-00001" summary="创建文件夹">
+      <created>1587996939838</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1587996939838</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -191,6 +221,10 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="创建文件夹" />
+    <option name="LAST_COMMIT_MESSAGE" value="创建文件夹" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="507" y="95" key="#Inspections" timestamp="1587973275760">
       <screen x="0" y="23" width="1440" height="814" />
@@ -200,69 +234,101 @@
       <screen x="0" y="23" width="1440" height="811" />
     </state>
     <state x="208" y="23" key="#Project_Structure/0.23.1440.811@0.23.1440.811" timestamp="1587966306997" />
-    <state x="572" y="134" key="#com.intellij.ide.util.MemberChooser" timestamp="1587996103503">
+    <state x="572" y="134" key="#com.intellij.ide.util.MemberChooser" timestamp="1588049327736">
+      <screen x="0" y="23" width="1440" height="814" />
+    </state>
+    <state x="572" y="134" key="#com.intellij.ide.util.MemberChooser/0.23.1440.812@0.23.1440.812" timestamp="1588042294125" />
+    <state x="572" y="134" key="#com.intellij.ide.util.MemberChooser/0.23.1440.814@0.23.1440.814" timestamp="1588049327736" />
+    <state x="297" y="23" key="CommitChangelistDialog2" timestamp="1587996939223">
       <screen x="0" y="23" width="1440" height="812" />
     </state>
-    <state x="572" y="134" key="#com.intellij.ide.util.MemberChooser/0.23.1440.812@0.23.1440.812" timestamp="1587996103503" />
-    <state x="572" y="134" key="#com.intellij.ide.util.MemberChooser/0.23.1440.814@0.23.1440.814" timestamp="1587992576937" />
-    <state width="1398" height="213" key="GridCell.Tab.0.bottom" timestamp="1587995914823">
-      <screen x="0" y="23" width="1440" height="812" />
+    <state x="297" y="23" key="CommitChangelistDialog2/0.23.1440.812@0.23.1440.812" timestamp="1587996939223" />
+    <state width="942" height="240" key="GridCell.Tab.0.bottom" timestamp="1588068166569">
+      <screen x="0" y="23" width="1440" height="814" />
     </state>
-    <state width="1071" height="195" key="GridCell.Tab.0.bottom/0.23.1440.811@0.23.1440.811" timestamp="1587978190283" />
-    <state width="1398" height="213" key="GridCell.Tab.0.bottom/0.23.1440.812@0.23.1440.812" timestamp="1587995914823" />
-    <state width="1398" height="213" key="GridCell.Tab.0.bottom/0.23.1440.814@0.23.1440.814" timestamp="1587995820361" />
-    <state width="1398" height="213" key="GridCell.Tab.0.bottom/0.23.1440.816@0.23.1440.816" timestamp="1587994369167" />
-    <state width="1398" height="213" key="GridCell.Tab.0.center" timestamp="1587995914822">
-      <screen x="0" y="23" width="1440" height="812" />
+    <state width="1277" height="236" key="GridCell.Tab.0.bottom/0.23.1440.811@0.23.1440.811" timestamp="1588047862581" />
+    <state width="942" height="240" key="GridCell.Tab.0.bottom/0.23.1440.812@0.23.1440.812" timestamp="1588068102338" />
+    <state width="942" height="240" key="GridCell.Tab.0.bottom/0.23.1440.814@0.23.1440.814" timestamp="1588068166569" />
+    <state width="942" height="240" key="GridCell.Tab.0.bottom/0.23.1440.816@0.23.1440.816" timestamp="1588067080256" />
+    <state width="942" height="240" key="GridCell.Tab.0.bottom/0.23.1440.821@0.23.1440.821" timestamp="1588057731040" />
+    <state width="942" height="240" key="GridCell.Tab.0.bottom/0.23.1440.822@0.23.1440.822" timestamp="1588056781149" />
+    <state width="942" height="240" key="GridCell.Tab.0.center" timestamp="1588068166568">
+      <screen x="0" y="23" width="1440" height="814" />
     </state>
-    <state width="1071" height="195" key="GridCell.Tab.0.center/0.23.1440.811@0.23.1440.811" timestamp="1587978190281" />
-    <state width="1398" height="213" key="GridCell.Tab.0.center/0.23.1440.812@0.23.1440.812" timestamp="1587995914822" />
-    <state width="1398" height="213" key="GridCell.Tab.0.center/0.23.1440.814@0.23.1440.814" timestamp="1587995820360" />
-    <state width="1398" height="213" key="GridCell.Tab.0.center/0.23.1440.816@0.23.1440.816" timestamp="1587994369167" />
-    <state width="1398" height="213" key="GridCell.Tab.0.left" timestamp="1587995914821">
-      <screen x="0" y="23" width="1440" height="812" />
+    <state width="1277" height="236" key="GridCell.Tab.0.center/0.23.1440.811@0.23.1440.811" timestamp="1588047862578" />
+    <state width="942" height="240" key="GridCell.Tab.0.center/0.23.1440.812@0.23.1440.812" timestamp="1588068102331" />
+    <state width="942" height="240" key="GridCell.Tab.0.center/0.23.1440.814@0.23.1440.814" timestamp="1588068166568" />
+    <state width="942" height="240" key="GridCell.Tab.0.center/0.23.1440.816@0.23.1440.816" timestamp="1588067080255" />
+    <state width="942" height="240" key="GridCell.Tab.0.center/0.23.1440.821@0.23.1440.821" timestamp="1588057731040" />
+    <state width="942" height="240" key="GridCell.Tab.0.center/0.23.1440.822@0.23.1440.822" timestamp="1588056781148" />
+    <state width="942" height="240" key="GridCell.Tab.0.left" timestamp="1588068166568">
+      <screen x="0" y="23" width="1440" height="814" />
     </state>
-    <state width="1071" height="195" key="GridCell.Tab.0.left/0.23.1440.811@0.23.1440.811" timestamp="1587978190281" />
-    <state width="1398" height="213" key="GridCell.Tab.0.left/0.23.1440.812@0.23.1440.812" timestamp="1587995914821" />
-    <state width="1398" height="213" key="GridCell.Tab.0.left/0.23.1440.814@0.23.1440.814" timestamp="1587995820359" />
-    <state width="1398" height="213" key="GridCell.Tab.0.left/0.23.1440.816@0.23.1440.816" timestamp="1587994369166" />
-    <state width="1398" height="213" key="GridCell.Tab.0.right" timestamp="1587995914822">
-      <screen x="0" y="23" width="1440" height="812" />
+    <state width="1277" height="236" key="GridCell.Tab.0.left/0.23.1440.811@0.23.1440.811" timestamp="1588047862576" />
+    <state width="942" height="240" key="GridCell.Tab.0.left/0.23.1440.812@0.23.1440.812" timestamp="1588068102330" />
+    <state width="942" height="240" key="GridCell.Tab.0.left/0.23.1440.814@0.23.1440.814" timestamp="1588068166568" />
+    <state width="942" height="240" key="GridCell.Tab.0.left/0.23.1440.816@0.23.1440.816" timestamp="1588067080254" />
+    <state width="942" height="240" key="GridCell.Tab.0.left/0.23.1440.821@0.23.1440.821" timestamp="1588057731039" />
+    <state width="942" height="240" key="GridCell.Tab.0.left/0.23.1440.822@0.23.1440.822" timestamp="1588056781148" />
+    <state width="942" height="240" key="GridCell.Tab.0.right" timestamp="1588068166569">
+      <screen x="0" y="23" width="1440" height="814" />
     </state>
-    <state width="1071" height="195" key="GridCell.Tab.0.right/0.23.1440.811@0.23.1440.811" timestamp="1587978190282" />
-    <state width="1398" height="213" key="GridCell.Tab.0.right/0.23.1440.812@0.23.1440.812" timestamp="1587995914822" />
-    <state width="1398" height="213" key="GridCell.Tab.0.right/0.23.1440.814@0.23.1440.814" timestamp="1587995820361" />
-    <state width="1398" height="213" key="GridCell.Tab.0.right/0.23.1440.816@0.23.1440.816" timestamp="1587994369167" />
-    <state width="1398" height="237" key="GridCell.Tab.1.bottom" timestamp="1587993511031">
-      <screen x="0" y="23" width="1440" height="812" />
+    <state width="1277" height="236" key="GridCell.Tab.0.right/0.23.1440.811@0.23.1440.811" timestamp="1588047862580" />
+    <state width="942" height="240" key="GridCell.Tab.0.right/0.23.1440.812@0.23.1440.812" timestamp="1588068102335" />
+    <state width="942" height="240" key="GridCell.Tab.0.right/0.23.1440.814@0.23.1440.814" timestamp="1588068166569" />
+    <state width="942" height="240" key="GridCell.Tab.0.right/0.23.1440.816@0.23.1440.816" timestamp="1588067080255" />
+    <state width="942" height="240" key="GridCell.Tab.0.right/0.23.1440.821@0.23.1440.821" timestamp="1588057731040" />
+    <state width="942" height="240" key="GridCell.Tab.0.right/0.23.1440.822@0.23.1440.822" timestamp="1588056781148" />
+    <state width="942" height="240" key="GridCell.Tab.1.bottom" timestamp="1588068114416">
+      <screen x="0" y="23" width="1440" height="814" />
     </state>
-    <state width="1157" height="243" key="GridCell.Tab.1.bottom/0.23.1440.811@0.23.1440.811" timestamp="1587967964106" />
-    <state width="1398" height="237" key="GridCell.Tab.1.bottom/0.23.1440.812@0.23.1440.812" timestamp="1587993511031" />
-    <state width="920" height="237" key="GridCell.Tab.1.bottom/0.23.1440.814@0.23.1440.814" timestamp="1587980503277" />
-    <state width="1398" height="237" key="GridCell.Tab.1.center" timestamp="1587993511027">
-      <screen x="0" y="23" width="1440" height="812" />
+    <state width="1277" height="236" key="GridCell.Tab.1.bottom/0.23.1440.811@0.23.1440.811" timestamp="1588047862234" />
+    <state width="942" height="240" key="GridCell.Tab.1.bottom/0.23.1440.812@0.23.1440.812" timestamp="1588068102074" />
+    <state width="942" height="240" key="GridCell.Tab.1.bottom/0.23.1440.814@0.23.1440.814" timestamp="1588068114416" />
+    <state width="942" height="240" key="GridCell.Tab.1.bottom/0.23.1440.816@0.23.1440.816" timestamp="1588067079906" />
+    <state width="942" height="240" key="GridCell.Tab.1.bottom/0.23.1440.821@0.23.1440.821" timestamp="1588067140740" />
+    <state width="942" height="240" key="GridCell.Tab.1.bottom/0.23.1440.822@0.23.1440.822" timestamp="1588056749159" />
+    <state width="942" height="240" key="GridCell.Tab.1.center" timestamp="1588068114415">
+      <screen x="0" y="23" width="1440" height="814" />
     </state>
-    <state width="1157" height="243" key="GridCell.Tab.1.center/0.23.1440.811@0.23.1440.811" timestamp="1587967964105" />
-    <state width="1398" height="237" key="GridCell.Tab.1.center/0.23.1440.812@0.23.1440.812" timestamp="1587993511027" />
-    <state width="920" height="237" key="GridCell.Tab.1.center/0.23.1440.814@0.23.1440.814" timestamp="1587980503276" />
-    <state width="1398" height="237" key="GridCell.Tab.1.left" timestamp="1587993511025">
-      <screen x="0" y="23" width="1440" height="812" />
+    <state width="1277" height="236" key="GridCell.Tab.1.center/0.23.1440.811@0.23.1440.811" timestamp="1588047862232" />
+    <state width="942" height="240" key="GridCell.Tab.1.center/0.23.1440.812@0.23.1440.812" timestamp="1588068102073" />
+    <state width="942" height="240" key="GridCell.Tab.1.center/0.23.1440.814@0.23.1440.814" timestamp="1588068114415" />
+    <state width="942" height="240" key="GridCell.Tab.1.center/0.23.1440.816@0.23.1440.816" timestamp="1588067079905" />
+    <state width="942" height="240" key="GridCell.Tab.1.center/0.23.1440.821@0.23.1440.821" timestamp="1588067140739" />
+    <state width="942" height="240" key="GridCell.Tab.1.center/0.23.1440.822@0.23.1440.822" timestamp="1588056749159" />
+    <state width="942" height="240" key="GridCell.Tab.1.left" timestamp="1588068114415">
+      <screen x="0" y="23" width="1440" height="814" />
     </state>
-    <state width="1157" height="243" key="GridCell.Tab.1.left/0.23.1440.811@0.23.1440.811" timestamp="1587967964104" />
-    <state width="1398" height="237" key="GridCell.Tab.1.left/0.23.1440.812@0.23.1440.812" timestamp="1587993511025" />
-    <state width="920" height="237" key="GridCell.Tab.1.left/0.23.1440.814@0.23.1440.814" timestamp="1587980503276" />
-    <state width="1398" height="237" key="GridCell.Tab.1.right" timestamp="1587993511030">
-      <screen x="0" y="23" width="1440" height="812" />
+    <state width="1277" height="236" key="GridCell.Tab.1.left/0.23.1440.811@0.23.1440.811" timestamp="1588047862231" />
+    <state width="942" height="240" key="GridCell.Tab.1.left/0.23.1440.812@0.23.1440.812" timestamp="1588068102072" />
+    <state width="942" height="240" key="GridCell.Tab.1.left/0.23.1440.814@0.23.1440.814" timestamp="1588068114415" />
+    <state width="942" height="240" key="GridCell.Tab.1.left/0.23.1440.816@0.23.1440.816" timestamp="1588067079905" />
+    <state width="942" height="240" key="GridCell.Tab.1.left/0.23.1440.821@0.23.1440.821" timestamp="1588067140739" />
+    <state width="942" height="240" key="GridCell.Tab.1.left/0.23.1440.822@0.23.1440.822" timestamp="1588056749158" />
+    <state width="942" height="240" key="GridCell.Tab.1.right" timestamp="1588068114415">
+      <screen x="0" y="23" width="1440" height="814" />
     </state>
-    <state width="1157" height="243" key="GridCell.Tab.1.right/0.23.1440.811@0.23.1440.811" timestamp="1587967964105" />
-    <state width="1398" height="237" key="GridCell.Tab.1.right/0.23.1440.812@0.23.1440.812" timestamp="1587993511030" />
-    <state width="920" height="237" key="GridCell.Tab.1.right/0.23.1440.814@0.23.1440.814" timestamp="1587980503276" />
-    <state x="221" y="23" key="SettingsEditor" timestamp="1587967948233">
+    <state width="1277" height="236" key="GridCell.Tab.1.right/0.23.1440.811@0.23.1440.811" timestamp="1588047862233" />
+    <state width="942" height="240" key="GridCell.Tab.1.right/0.23.1440.812@0.23.1440.812" timestamp="1588068102073" />
+    <state width="942" height="240" key="GridCell.Tab.1.right/0.23.1440.814@0.23.1440.814" timestamp="1588068114415" />
+    <state width="942" height="240" key="GridCell.Tab.1.right/0.23.1440.816@0.23.1440.816" timestamp="1588067079905" />
+    <state width="942" height="240" key="GridCell.Tab.1.right/0.23.1440.821@0.23.1440.821" timestamp="1588067140740" />
+    <state width="942" height="240" key="GridCell.Tab.1.right/0.23.1440.822@0.23.1440.822" timestamp="1588056749159" />
+    <state x="221" y="23" key="SettingsEditor" timestamp="1588045841439">
       <screen x="0" y="23" width="1440" height="812" />
     </state>
     <state x="221" y="67" key="SettingsEditor/0.23.1440.811@0.23.1440.811" timestamp="1587966417413" />
-    <state x="221" y="23" key="SettingsEditor/0.23.1440.812@0.23.1440.812" timestamp="1587967948233" />
+    <state x="221" y="23" key="SettingsEditor/0.23.1440.812@0.23.1440.812" timestamp="1588045841439" />
     <state x="221" y="23" key="SettingsEditor/0.23.1440.814@0.23.1440.814" timestamp="1587966940461" />
+    <state x="320" y="169" key="Vcs.Push.Dialog.v2" timestamp="1587996942268">
+      <screen x="0" y="23" width="1440" height="812" />
+    </state>
+    <state x="320" y="169" key="Vcs.Push.Dialog.v2/0.23.1440.812@0.23.1440.812" timestamp="1587996942268" />
+    <state x="514" y="55" width="822" height="730" key="find.popup" timestamp="1588062609309">
+      <screen x="0" y="23" width="1440" height="814" />
+    </state>
+    <state x="514" y="55" width="822" height="730" key="find.popup/0.23.1440.814@0.23.1440.814" timestamp="1588062609309" />
     <state x="581" y="161" width="670" height="675" key="search.everywhere.popup" timestamp="1587996310639">
       <screen x="0" y="23" width="1440" height="812" />
     </state>
@@ -276,6 +342,11 @@
           <url>jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home/javafx-src.zip!/javafx/scene/paint/Color.java</url>
           <line>144</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/cloud-client/src/main/java/xin/spring/bless/javafx/client/views/Demo.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

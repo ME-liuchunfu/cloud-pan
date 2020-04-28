@@ -66,6 +66,7 @@ public class CloudFile implements Serializable {
     @Column(name="file_type", columnDefinition="varchar(12) COMMENT '文件类型'")
     private String fileType;
 
+    @Transient
     private User user;
 
     @Override
