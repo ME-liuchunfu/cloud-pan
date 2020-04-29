@@ -25,6 +25,8 @@ import xin.spring.bless.javafx.common.utils.ColorUtils;
 import xin.spring.bless.javafx.common.utils.DateUtils;
 import xin.spring.bless.javafx.common.utils.EventListenerUtils;
 import xin.spring.bless.javafx.common.utils.StringUtils;
+import xin.spring.bless.javafx.conf.FastDfsServer;
+import xin.spring.bless.javafx.conf.ServerConf;
 import xin.spring.bless.javafx.core.AbsInitializable;
 import xin.spring.bless.javafx.db.repositories.CloudFileRepository;
 import xin.spring.bless.javafx.db.repositories.FolderFileRepository;
@@ -32,6 +34,9 @@ import xin.spring.bless.javafx.dialog.AlertDialog;
 import xin.spring.bless.javafx.fastdfs.FastDfsClient;
 import xin.spring.bless.javafx.fastdfs.FastDfsUI;
 import xin.spring.bless.javafx.framework.factory.FileDiskFactory;
+import xin.spring.bless.javafx.framework.factory.YmlFactory;
+import xin.spring.bless.javafx.framework.http.HttpDownLoad;
+import xin.spring.bless.javafx.framework.http.OnDownloadListener;
 
 import java.io.File;
 import java.util.*;
@@ -193,7 +198,63 @@ public class IndexAppController extends AbsInitializable {
                 log.debug("打开");
                 openNextTag(mVBox);
             });
-            item2.setOnAction(ev -> log.debug("下载"));
+            item2.setOnAction(ev -> {
+                log.debug("下载");
+                File f = FileDiskFactory.newInstance().chooseFolder(null);
+                if(f != null){
+                    User user = ApplicationSession.newInstance().getUser();
+                    Collection<FolderFile> folderFiles = tempDeleteFolders(file.getFolderId(), user.getUserId());
+                    ArrayList<FolderFile> fold = folderFileRepository.findByFolderIdAndUserId(file.getFolderId(), user.getUserId());
+                    if (fold != null){
+                        fold.addAll(folderFiles);
+                        FastDfsServer load = (FastDfsServer) YmlFactory.newInstance().load("/application.yml", FastDfsServer.class);
+                        ServerConf server = load.getServer();
+                        ArrayList<FolderFile> downFile = new ArrayList<>();
+                        fold.forEach(it->{
+                            if ("FILE".equals(it.getType())){
+                                Optional<CloudFile> cloudFile = cloudFileRepository.findById(it.getFileId());
+                                if (cloudFile.isPresent() && cloudFile.get() != null){
+                                    it.setCloudFile(cloudFile.get());
+                                    downFile.add(it);
+                                }
+                            }
+                        });
+                        downFile.forEach(d->{
+                            if(d.getCloudFile() != null){
+                                new Thread() {
+                                    @Override
+                                    public void run() {
+                                        String taPath = f.getAbsolutePath();
+                                        if(!StringUtils.isEmpty(d.getFolderParents())){
+                                            taPath += d.getFolderParents();
+                                        }
+                                        HttpDownLoad.newInstance().downLoadFromUrl(
+                                                server.getHttpAddr() + d.getCloudFile().getFilePath(),
+                                                d.getFolderName(),
+                                                taPath, new OnDownloadListener() {
+                                                    @Override
+                                                    public void onDownloadSuccess(File file) {
+                                                        log.debug("下载成功：" + file.getAbsolutePath());
+                                                    }
+
+                                                    @Override
+                                                    public void onDownloading(int progress) {
+                                                        log.debug("下载中：" + progress);
+                                                    }
+
+                                                    @Override
+                                                    public void onDownloadFailed(Exception e) {
+                                                        log.error("下载出错：" + e.getMessage());
+                                                    }
+                                                }
+                                        );
+                                    }
+                                }.start();
+                            }
+                        });
+                    }
+                }
+            });
             item3.setOnAction(ev -> log.debug("分享"));
             item4.setOnAction(ev -> {
                 log.debug("删除");
@@ -419,7 +480,7 @@ public class IndexAppController extends AbsInitializable {
                     folderFile.setLavel(f.get().getLavel() + 1);
                     String pa = "";
                     if(!StringUtils.isEmpty(f.get().getFolderParents())){
-                        pa = "/" + f.get().getFolderParents() + "/" + f.get().getFolderName();
+                        pa = f.get().getFolderParents() + "/" + f.get().getFolderName();
                     }else {
                         pa = "/" + f.get().getFolderName();
                     }
@@ -436,6 +497,7 @@ public class IndexAppController extends AbsInitializable {
                 }else {
                     folderFile.setFolderName(file.getName());
                 }
+                folderFile.setFileId(cloudFile.getFileId());
                 folderFileRepository.save(folderFile);
                 flushFolderFile();
             }else{

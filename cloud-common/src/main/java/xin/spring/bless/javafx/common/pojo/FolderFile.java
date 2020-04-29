@@ -80,7 +80,16 @@ public class FolderFile implements Serializable {
     @Column(name="create_time", columnDefinition="varchar(255) COMMENT '创建时间'")
     private Date createTime;
 
+    /**
+     * 文件编号
+     */
+    @Column(name="file_id", columnDefinition="bigint(64) COMMENT '文件编号'")
+    private Long fileId;
+
     @Transient
     private User user;
+
+    @Transient
+    private CloudFile cloudFile;
 
 }

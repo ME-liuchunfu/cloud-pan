@@ -98,6 +98,9 @@ public class Prose extends Application {
                     updateMessage("current:" + i + "Thread.sleep===2000 milliseconds");
                     updateProgress(i + 1, 10);
                 }
+                ///Users/mac/Desktop/uploadPath
+//                HttpDownLoad.newInstance().downloadAsyn("http://39.108.106.34:9870/source/M00/00/00/rBAVlF6nuruAY1JwAC6hlVFm4mc181.mp3",
+//                        "/Users/mac/Desktop/uploadPath", );
                 return true;
             }
         };
