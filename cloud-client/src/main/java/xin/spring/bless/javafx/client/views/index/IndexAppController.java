@@ -1,7 +1,10 @@
 package xin.spring.bless.javafx.client.views.index;
 
 import com.alibaba.fastjson.JSON;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -21,18 +24,18 @@ import xin.spring.bless.javafx.client.views.folder.FolderApplication;
 import xin.spring.bless.javafx.common.pojo.CloudFile;
 import xin.spring.bless.javafx.common.pojo.FolderFile;
 import xin.spring.bless.javafx.common.pojo.User;
-import xin.spring.bless.javafx.common.utils.ColorUtils;
-import xin.spring.bless.javafx.common.utils.DateUtils;
-import xin.spring.bless.javafx.common.utils.EventListenerUtils;
-import xin.spring.bless.javafx.common.utils.StringUtils;
+import xin.spring.bless.javafx.common.utils.*;
 import xin.spring.bless.javafx.conf.FastDfsServer;
 import xin.spring.bless.javafx.conf.ServerConf;
 import xin.spring.bless.javafx.core.AbsInitializable;
 import xin.spring.bless.javafx.db.repositories.CloudFileRepository;
 import xin.spring.bless.javafx.db.repositories.FolderFileRepository;
+import xin.spring.bless.javafx.db.repositories.UserRepository;
 import xin.spring.bless.javafx.dialog.AlertDialog;
 import xin.spring.bless.javafx.fastdfs.FastDfsClient;
 import xin.spring.bless.javafx.fastdfs.FastDfsUI;
+import xin.spring.bless.javafx.framework.cache.DirCache;
+import xin.spring.bless.javafx.framework.exception.FastDfsClientException;
 import xin.spring.bless.javafx.framework.factory.FileDiskFactory;
 import xin.spring.bless.javafx.framework.factory.YmlFactory;
 import xin.spring.bless.javafx.framework.http.HttpDownLoad;
@@ -59,13 +62,15 @@ public class IndexAppController extends AbsInitializable {
 
     @FXML private FlowPane contFlow;
 
-    @FXML private Pane topParent;
+    @FXML private Pane leftPanel;
 
     @FXML private ScrollPane scrollPane;
 
     @Autowired private CloudFileRepository cloudFileRepository;
 
     @Autowired private FolderFileRepository folderFileRepository;
+
+    @Autowired private UserRepository userRepository;
 
     private String path = "";
 
@@ -80,18 +85,109 @@ public class IndexAppController extends AbsInitializable {
 
     @Override
     protected void beforeDatas() {
+        createLeftPanel();
+        createContentPanel();
+    }
 
-//        topParent.setBorder(
-//                new Border(
-//                        new BorderStroke(
-//                                null,
-//                                BorderStrokeStyle.SOLID,
-//                                new CornerRadii(0),
-//                                new BorderWidths(0,0,1,0)
-//                                )
-//                )
-//        );
+    /**
+     * 创建并初始化左边面板
+     */
+    private void createLeftPanel() {
 
+        leftPanel.getChildren().removeAll(leftPanel.getChildren());
+
+        VBox vBox = new VBox();
+        vBox.setAlignment(Pos.CENTER);
+        vBox.setPrefWidth(leftPanel.getPrefWidth());
+
+        // 用户信息
+        User user = ApplicationSession.newInstance().getUser();
+        Label uName = new Label(user.getUserName());
+        uName.setAlignment(Pos.CENTER_LEFT);
+        uName.setPadding(new Insets(0,10,0,10));
+        uName.setPrefWidth(vBox.getPrefWidth());
+        VBox.setMargin(uName, new Insets(10,0,5,0));
+
+        // 创建进度
+        ProgressBar disk = new ProgressBar(0);
+        disk.setPadding(new Insets(0,10,0,10));
+        disk.setPrefWidth(vBox.getPrefWidth());
+        Task worker = createWorker(user.getCurrentDiskSize(), user.getMaxDiskSize());
+        disk.progressProperty().unbind();
+        disk.progressProperty().bind(worker.progressProperty());
+
+        // 创建容量文字
+        String covent = DiskCoventUtils.covent(user.getCurrentDiskSize(), user.getMaxDiskSize());
+        Label label = new Label(covent);
+        label.setPrefWidth(vBox.getPrefWidth());
+        label.setAlignment(Pos.CENTER_LEFT);
+        label.setPadding(new Insets(0,10,0,10));
+        VBox.setMargin(label, new Insets(5,0,5,0));
+        worker.messageProperty().addListener(new ChangeListener<String>() {
+            public void changed(ObservableValue<? extends String> observable,
+                                String oldValue, String newValue) {
+                log.info(newValue);
+                label.setText(newValue);
+            }
+        });
+        new Thread(worker).start();
+
+        // 正在下载
+        Label down = new Label("正在下载");
+        Label zz = new Label("赞助作者");
+        Label lx = new Label("联系客服");
+
+        down.setAlignment(Pos.CENTER);
+        down.setPadding(new Insets(10,10,10,10));
+        down.setPrefWidth(vBox.getPrefWidth());
+        zz.setAlignment(Pos.CENTER);
+        zz.setPadding(new Insets(10,10,10,10));
+        zz.setPrefWidth(vBox.getPrefWidth());
+
+        lx.setAlignment(Pos.CENTER);
+        lx.setPadding(new Insets(10,10,10,10));
+        lx.setPrefWidth(vBox.getPrefWidth());
+
+//        VBox.setMargin(down, new Insets(5,0,5,0));
+//        VBox.setMargin(zz, new Insets(5,0,5,0));
+
+        Color denter = Color.rgb(0, 0, 0, 0.08);
+        down.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, null,null)));
+        EventListenerUtils.handerEventBackEach(denter, Color.TRANSPARENT, (node, event) -> {
+            log.debug("left：" + ((Label)node).getText());
+        },down, zz, lx);
+
+        vBox.getChildren().addAll(uName, disk, label, down, zz, lx);
+        leftPanel.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
+        leftPanel.setBorder(new Border(new BorderStroke(denter, BorderStrokeStyle.SOLID, new CornerRadii(2), new BorderWidths(0,1,0,0))));
+        leftPanel.getChildren().addAll(vBox);
+    }
+
+    /**
+     * 更新容量进度条
+     * @param c
+     * @param t
+     * @return
+     */
+    public Task createWorker(long c, long t) {
+        return new Task() {
+            private boolean flag = false;
+            @Override
+            protected Object call() throws Exception {
+                if (!flag) {
+                    updateMessage(DiskCoventUtils.covent(c,t));
+                    updateProgress(c, t);
+                    flag = true;
+                }
+                return true;
+            }
+        };
+    }
+
+    /**
+     * 创建并初始化主页面内容
+     */
+    private void createContentPanel() {
         Label newFolder = new Label("新建文件夹");
         newFolder.setPadding(new Insets(5,5,5,5));
         newFolder.setAlignment(Pos.CENTER);
@@ -179,6 +275,9 @@ public class IndexAppController extends AbsInitializable {
         flushFolderFile();
     }
 
+    /**
+     * 创建文件夹菜单
+     */
     private void createmenuItem(){
         contextMenu.getItems().removeAll(contextMenu.getItems());
         ArrayList<MenuItem> menuItems = new ArrayList<>();
@@ -299,6 +398,11 @@ public class IndexAppController extends AbsInitializable {
         return folderFiles;
     }
 
+    /**
+     * 地柜查找云端文件
+     * @param files
+     * @return
+     */
     private List<FolderFile> findFolderItems(List<FolderFile> files) {
         List<FolderFile> folderFiles = new ArrayList<>();
         if (null != files && files.size() > 0){
@@ -321,6 +425,9 @@ public class IndexAppController extends AbsInitializable {
         return files;
     }
 
+    /**
+     * 创建显示页文件或文件夹
+     */
     private void flushFolderFile(){
         contFlow.getChildren().removeAll(contFlow.getChildren());
         User user = ApplicationSession.newInstance().getUser();
@@ -452,57 +559,95 @@ public class IndexAppController extends AbsInitializable {
             fileChooser.setTitle("请选择相对应的文件");
         });
         if (file != null && file.isFile()){
+            // 创建文件
+            User user = ApplicationSession.newInstance().getUser();
+            if(file.length() > (user.getMaxDiskSize() - user.getCurrentDiskSize())){
+                // 超出剩余存储空间
+                AlertDialog.error("上传出错", "当前剩余空间不足").showAndWait();
+                return;
+            }
             long start = System.currentTimeMillis();
             log.debug("上传开始：{}",start);
-            FastDfsUI display = FastDfsClient.newInstance().uploadFile(file);
-            log.debug("上传结果：{}", display);
-            if(display != null){
-                display.getDisplay().close();
-                log.debug(display.getFileId());
-                CloudFile cloudFile = new CloudFile();
-                cloudFile.setFileName(file.getName());
-                cloudFile.setFilePath(display.getFileId());
-                cloudFile.setFileSize(file.length());
-                cloudFile.setCreateTime(new Date());
-                cloudFile.setFileType(display.getFileType());
-                cloudFileRepository.save(cloudFile);
-                long end = System.currentTimeMillis();
-                log.debug("上传结束：{}", end);
-                log.debug("耗时：{}", DateUtils.getDatePoor(end, start));
-                // 创建文件
-                User user = ApplicationSession.newInstance().getUser();
-                FolderFile folder = folderFileRepository.findByFolderNameAndFolderPidAndUserId(file.getName(), folderPid, user.getUserId());
-                FolderFile folderFile = new FolderFile();
-                folderFile.setCreateTime(new Date());
-                folderFile.setFolderPid(folderPid);
-                Optional<FolderFile> f = folderFileRepository.findById(folderPid);
-                if(f.isPresent() && f.get() != null){
-                    folderFile.setLavel(f.get().getLavel() + 1);
-                    String pa = "";
-                    if(!StringUtils.isEmpty(f.get().getFolderParents())){
-                        pa = f.get().getFolderParents() + "/" + f.get().getFolderName();
-                    }else {
-                        pa = "/" + f.get().getFolderName();
+            FastDfsClient.newInstance().uploadFile(file.getAbsolutePath(),
+                new FastDfsClient.OnUploadListener() {
+
+                    @Override
+                    public void ready(FastDfsUI ui) {}
+
+                    @Override
+                    public void success(Object o, FastDfsUI ui) {
+                        uiThread(new UIThread<FastDfsUI>() {
+                            @Override
+                            public void run(FastDfsUI fastDfsUI) {
+                                log.debug("上传结果：{}", ui);
+                                ui.getDisplay().close();
+                                log.debug(ui.getFileId());
+                                CloudFile cloudFile = new CloudFile();
+                                cloudFile.setFileName(file.getName());
+                                cloudFile.setFilePath(ui.getFileId());
+                                cloudFile.setFileSize(file.length());
+                                cloudFile.setCreateTime(new Date());
+                                cloudFile.setFileType(ui.getFileType());
+                                cloudFileRepository.save(cloudFile);
+                                long end = System.currentTimeMillis();
+                                log.debug("上传结束：{}", end);
+                                log.debug("耗时：{}", DateUtils.getDatePoor(end, start));
+
+                                FolderFile folder = folderFileRepository.findByFolderNameAndFolderPidAndUserId(file.getName(), folderPid, user.getUserId());
+                                FolderFile folderFile = new FolderFile();
+                                folderFile.setCreateTime(new Date());
+                                folderFile.setFolderPid(folderPid);
+                                Optional<FolderFile> f = folderFileRepository.findById(folderPid);
+                                if(f.isPresent() && f.get() != null){
+                                    folderFile.setLavel(f.get().getLavel() + 1);
+                                    String pa = "";
+                                    if(!StringUtils.isEmpty(f.get().getFolderParents())){
+                                        pa = f.get().getFolderParents() + "/" + f.get().getFolderName();
+                                    }else {
+                                        pa = "/" + f.get().getFolderName();
+                                    }
+                                    folderFile.setFolderParents(pa);
+                                    folderFile.setFolderPname(f.get().getFolderName());
+                                }else{
+                                    folderFile.setLavel(1);
+                                }
+                                folderFile.setType("FILE");
+                                folderFile.setFileType(ui.getFileType());
+                                folderFile.setUserId(user.getUserId());
+                                if(folder != null){
+                                    folderFile.setFolderName(folder.getFolderName() + "_a_" + 1);
+                                }else {
+                                    folderFile.setFolderName(file.getName());
+                                }
+                                folderFile.setFileId(cloudFile.getFileId());
+                                folderFileRepository.save(folderFile);
+                                userRepository.updateCurrentDiskSizeByUserId(user.getCurrentDiskSize() + file.length(), user
+                                        .getUserId());
+                                Optional<User> u = userRepository.findById(user.getUserId());
+                                if (u.isPresent() && u.get() != null){
+                                    ApplicationSession.newInstance().putUser(u.get());
+                                    String json = JSON.toJSONString(user);
+                                    new DirCache().cacheUser(json);
+                                    createLeftPanel();
+                                }
+                                flushFolderFile();
+                            }
+                        }, ui);
                     }
-                    folderFile.setFolderParents(pa);
-                    folderFile.setFolderPname(f.get().getFolderName());
-                }else{
-                    folderFile.setLavel(1);
-                }
-                folderFile.setType("FILE");
-                folderFile.setFileType(display.getFileType());
-                folderFile.setUserId(user.getUserId());
-                if(folder != null){
-                    folderFile.setFolderName(folder.getFolderName() + "_a_" + 1);
-                }else {
-                    folderFile.setFolderName(file.getName());
-                }
-                folderFile.setFileId(cloudFile.getFileId());
-                folderFileRepository.save(folderFile);
-                flushFolderFile();
-            }else{
-                AlertDialog.error("文件上传提示", "文件上传失败").showAndWait();
-            }
+
+                    @Override
+                    public void faild(FastDfsClientException e, FastDfsUI ui) {
+                        uiThread(new UIThread<FastDfsUI>() {
+                            @Override
+                            public void run(FastDfsUI t) {
+                                if (t != null){
+                                    t.getDisplay().close();
+                                }
+                                AlertDialog.error("文件上传提示", "文件上传失败").showAndWait();
+                            }
+                        }, ui);
+                    }
+                });
         }
     }
 

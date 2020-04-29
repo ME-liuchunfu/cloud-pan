@@ -62,13 +62,13 @@ public class User implements Serializable {
     /**
      *最大可存储大小
      */
-    @Column(name="max_disk_size", columnDefinition="varchar(255) COMMENT '容量'")
+    @Column(name="max_disk_size", columnDefinition="bigint(64) COMMENT '容量'")
     private Long maxDiskSize;
 
     /**
      *当前存储大小
      */
-    @Column(name="current_disk_size", columnDefinition="varchar(255) COMMENT '已用容量'")
+    @Column(name="current_disk_size", columnDefinition="bigint(64) COMMENT '已用容量'")
     private Long currentDiskSize;
 
     /**

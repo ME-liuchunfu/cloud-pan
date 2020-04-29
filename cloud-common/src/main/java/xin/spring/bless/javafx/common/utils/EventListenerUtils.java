@@ -58,6 +58,44 @@ public class EventListenerUtils {
     }
 
     /**
+     * 背景
+     * @param node
+     * @param colorEnter
+     * @param colorOver
+     * @param callBack
+     */
+    public static void handerEventBackEach(Color colorEnter, Color colorOver, CallBack callBack, Region... node){
+        if(node != null){
+            try {
+                for (int i=0;i<node.length; i++){
+                    if (colorOver != null){
+                        // 鼠标移出
+                        int finalI2 = i;
+                        node[i].addEventFilter(MouseEvent.MOUSE_EXITED, event -> {
+                            node[finalI2].setBackground(new Background(new BackgroundFill(colorOver, null, null)));
+                        });
+                    }
+                    if(colorEnter != null) {
+                        // 鼠标移入
+                        int finalI1 = i;
+                        node[i].addEventFilter(MouseEvent.MOUSE_ENTERED, event -> {
+                            node[finalI1].setBackground(new Background(new BackgroundFill(colorEnter, null, null)));
+                        });
+                    }
+                    if (callBack != null) {
+                        int finalI = i;
+                        node[i].addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
+                            callBack.hander(node[finalI], event);
+                        });
+                    }
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
      * 圆角背景
      * @param node
      * @param radii

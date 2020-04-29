@@ -104,12 +104,16 @@ public class LoginAppController extends AbsInitializable {
                     user.setLoginName(loginN);
                     user.setPassword(pwd);
                     user.setEnables(true);
+                    user.setCurrentDiskSize(0L);
+                    user.setMaxDiskSize((long) (1024 * 1024 * 1024 * 1024));
                     User save = userRepository.save(user);
                     if(null != user){
                         alert = AlertDialog.confi("注册成功提示","注册成功是否登录。");
                         Optional<ButtonType> buttonType = alert.showAndWait();
                         if(buttonType.isPresent() && buttonType.get() == ButtonType.OK){
                             ApplicationSession.newInstance().putUser(save);
+                            String json = JSON.toJSONString(user);
+                            new DirCache().cacheUser(json);
                             // 关闭当前，并跳转主页面
                             Stage stage = (Stage)register.getScene().getWindow();
                             stage.close();

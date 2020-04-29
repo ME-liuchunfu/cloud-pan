@@ -1,5 +1,6 @@
 package xin.spring.bless.javafx.core;
 
+import javafx.application.Platform;
 import javafx.fxml.Initializable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -65,4 +66,19 @@ public abstract class AbsInitializable implements Initializable, Slf4jLog {
         }
     }
 
+    protected <T> void uiThread(UIThread<T> uiThread, T t){
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                //更新JavaFX的主线程的代码放在此处
+                if(uiThread != null){
+                    uiThread.run(t);
+                }
+            }
+        });
+    }
+
+    public static interface UIThread<T>{
+        public void run(T t);
+    }
 }

@@ -14,7 +14,7 @@ import xin.spring.bless.javafx.framework.annotation.ViewTitle;
  * @Author: $user$
  * @Date: $date$ $time$
  */
-@ViewTitle("首页")
+@ViewTitle("云上存储")
 public class IndexApplication extends BaseApplication<IndexApplication> {
 
     @Override
